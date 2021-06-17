@@ -17,9 +17,11 @@
 # Release name
 PRODUCT_RELEASE_NAME := RMX1931
 
-$(call inherit-product, build/target/product/embedded.mk)
-
 # Inherit from our custom product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+
 $(call inherit-product, vendor/omni/config/common.mk)
 
 ## Device identifier. This must come after all inclusions

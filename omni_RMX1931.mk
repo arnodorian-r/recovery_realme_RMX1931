@@ -23,6 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
 $(call inherit-product, vendor/twrp/config/common.mk)
+$(call inherit-product, device/realme/RMX1931/device.mk)
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := RMX1931

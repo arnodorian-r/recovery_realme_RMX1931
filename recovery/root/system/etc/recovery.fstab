@@ -56,7 +56,7 @@
 # The update_engine code looks for this entry in order to determine the boot device address
 # and fails if it does not find it.
 /dev/block/bootdevice/by-name/misc                      /misc                  emmc    defaults                                             defaults
-/devices/platform/soc/*.ssusb/*.dwc3/xhci-hcd.*.auto*   /usb_otg               vfat    nosuid,nodev    wait,voldmanaged=usbotg:auto
+/dev/block/sdg1 										/usb_otg               vfat    nosuid,nodev    										wait,voldmanaged=usbotg:auto
 /dev/block/bootdevice/by-name/opporeserve2              /opporeserve           ext4    nosuid,nodev,noatime,barrier=1                       wait,check
 
 /dev/block/bootdevice/by-name/boot                      /boot                  emmc    defaults                  recoveryonly

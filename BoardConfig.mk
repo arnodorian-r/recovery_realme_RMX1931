@@ -111,16 +111,24 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery/root/system/etc/recovery.fstab
 
-# Crypto
-PLATFORM_VERSION := 127
+# Use mke2fs to create ext4 images
+TARGET_USES_MKE2FS := true
+
+# Encryption
+PLATFORM_VERSION := 20.1.0
 PLATFORM_SECURITY_PATCH := 2099-12-31
 VENDOR_SECURITY_PATCH := 2099-12-31
-PLATFORM_VERSION_LAST_STABLE := 127
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_CRYPTO_FBE := true
 TW_INCLUDE_FBE_METADATA_DECRYPT := true
+TW_USE_FSCRYPT_POLICY := 1
 BOARD_USES_METADATA_PARTITION := true
 BOARD_USES_QCOM_FBE_DECRYPTION := true
+PRODUCT_ENFORCE_VINTF_MANIFEST := true
+
+# Extras
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TW_INCLUDE_RESETPROP := true
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
@@ -141,6 +149,8 @@ TW_OZIP_DECRYPT_KEY := 1c4c1ea3a12531ae491b21bb31613c11
 TW_HAS_EDL_MODE := true
 TW_EXCLUDE_APEX := true
 TW_SKIP_COMPATIBILITY_CHECK := true
+TW_OVERRIDE_SYSTEM_PROPS := \
+    "ro.build.product;ro.build.fingerprint=ro.system.build.fingerprint;ro.build.version.incremental;ro.product.device=ro.product.system.device;ro.product.model=ro.product.system.model;ro.product.name=ro.product.system.name"
 
 # Debug
 TWRP_INCLUDE_LOGCAT := true
